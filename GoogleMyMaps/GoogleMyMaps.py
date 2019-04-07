@@ -48,7 +48,7 @@ class GoogleMyMaps():
 
         return parsed
 
-    def get(self, mapID):
+    def get(self, mapID, layers=[0]):
         r = self.getFromMyMap(mapID)
         if r.status_code != 200:
             print("status_code:", r.status_code)
@@ -58,5 +58,9 @@ class GoogleMyMaps():
         # mapID = data[1]
         # mapName = data[2]
 
-        layerData = data[6][0]
-        return self.parseLayerData(layerData)
+        parsed = []
+        for layer in layers:
+            layerData = data[6][layer]
+            parsed += self.parseLayerData(layerData)
+
+        return parsed

@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup_args = {
     'name': 'GoogleMyMaps',
-    'version': '1.0.0',
+    'version': '1.1.0',
     'license': 'MIT',
     'description': 'Python parser for Google My Maps.',
     'url': 'https://github.com/nabehide/GoogleMyMaps',
