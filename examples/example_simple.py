@@ -1,6 +1,7 @@
 from GoogleMyMaps import GoogleMyMaps
 from pprint import pprint
-from private import mapID
+
+mapID = "YOUR_MAP_ID"
 
 
 if __name__ == "__main__":
