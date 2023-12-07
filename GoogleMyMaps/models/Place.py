@@ -1,0 +1,2 @@
+class Place:
+    pass

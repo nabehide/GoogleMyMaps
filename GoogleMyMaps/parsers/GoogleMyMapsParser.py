@@ -1,0 +1,2 @@
+class GoogleMyMapsParser:
+    pass
