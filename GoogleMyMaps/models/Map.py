@@ -3,6 +3,3 @@ class Map:
         self.link = link
         self.name = name
         self.layers = layers
-
-    def add_layer(self, layer):
-        self.layers.append(layer)
