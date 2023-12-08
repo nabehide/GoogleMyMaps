@@ -1,15 +1,25 @@
 class Place:
-    def __init__(self, name, coords, photos, place_type, data):
-        self.name = name
+    def __init__(self,
+                 place_type: str,
+                 name: str,
+                 coords: list[float] or list[list[float]],
+                 photos: list[str] or None,
+                 data: dict or None):
         self.place_type = place_type
+        self.name = name
         self.coords = coords
-        self.photos = photos if photos else None
+        self.photos = photos
         self.data = data
 
     def __str__(self):
-        data_str = '\n'.join([f"          {data}" for data in self.data]) if self.data else "          No data"
-        return f'Place: {self.name}\n' \
-               f'        Place type: {self.place_type}\n' \
-               f'        Coordinates: {self.coords}\n' \
-               f'        Photos: {self.photos}\n' \
-               f'        Data:\n{data_str}\n'
+        photos_str = ('      Photos:\n'
+                      + ''.join([f"        {photo}\n" for photo in self.photos])) \
+            if self.photos else ''
+        data_str = ('      Data:\n'
+                    + ''.join([f"        {data}: {self.data[data]}\n" for data in self.data])) \
+            if self.data else ''
+
+        return f'{self.place_type}: {self.name}\n' \
+               f'      Coordinates: {self.coords}\n' \
+               f'{photos_str}' \
+               f'{data_str}'
