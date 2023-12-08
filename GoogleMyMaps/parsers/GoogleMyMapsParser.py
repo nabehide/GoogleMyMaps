@@ -19,17 +19,17 @@ class GoogleMyMapsParser:
         response = requests.get(url)
 
         if response.status_code != 200:
-            raise Exception(f"Failed to fetch map data. Status code: {response.status_code}")
+            raise Exception(f'Failed to fetch map data. Status code: {response.status_code}')
 
         return response.text
 
     def _parse_data(self, raw_data):
-        soup = BeautifulSoup(raw_data, "html.parser")
-        script = soup.find_all("script")[1].text
+        soup = BeautifulSoup(raw_data, 'html.parser')
+        script = soup.find_all('script')[1].text
         js = self.parser.parse(script)
-        page_data = js["body"][1]["declarations"][0]["init"]["value"]
+        page_data = js['body'][1]['declarations'][0]['init']['value']
 
-        data = page_data.replace("true", "True").replace("false", "False").replace("null", "None")
-        data = data.replace("\n", "").replace('\xa0', ' ')
+        data = page_data.replace('true', 'True').replace('false', 'False').replace('null', 'None')
+        data = data.replace('\n', '').replace('\xa0', ' ')
 
         return eval(data)[1]

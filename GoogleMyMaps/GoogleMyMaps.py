@@ -8,7 +8,7 @@ class GoogleMyMaps:
 
     def create_map(self, map_link, chosen_layers: list = None):
         data = self.parser.get_map_data(map_link)
-        name = data[2] if len(data) > 2 else "Unnamed Map"
+        name = data[2] if len(data) > 2 else 'Unnamed Map'
         chosen_layers = self._parse_layers(data[6], chosen_layers) if len(data) > 6 else []
         return Map(map_link, name, chosen_layers)
 
@@ -16,7 +16,7 @@ class GoogleMyMaps:
         layers = []
         for index, layer_data in enumerate(layers_data):
             if chosen_layers is None or index in chosen_layers:
-                layer_name = layer_data[2] if len(layer_data) > 2 else f"Unnamed Layer {index + 1}"
+                layer_name = layer_data[2] if len(layer_data) > 2 else f'Unnamed Layer {index + 1}'
                 places = self._parse_places(layer_data[12][0][13][0]) if len(layer_data) > 12 else []
                 layers.append(Layer(layer_name, places))
         return layers
@@ -27,7 +27,7 @@ class GoogleMyMaps:
             place_type, coords = self._get_place_type_and_coords(place_data) if len(place_data) > 5 else (None, None)
 
             place_info = place_data[5] if len(place_data) > 5 else None
-            name = place_info[0][1][0] if place_info is not None and len(place_info[0]) > 1 else "Unnamed Place"
+            name = place_info[0][1][0] if place_info is not None and len(place_info[0]) > 1 else 'Unnamed Place'
             photos = [photo[1] for photo in place_info[2]] if len(place_info) > 2 and place_info[2] else None
             data = self._extract_place_data(place_info) if len(place_info) > 5 else None
             places.append(Place(name, coords, photos, place_type, data))
