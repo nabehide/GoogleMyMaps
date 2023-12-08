@@ -16,6 +16,8 @@ setup_args = {
     'install_requires': [
         'beautifulsoup4',
         'pyjsparser',
+        'requests',
+        're',
     ],
 }
 

@@ -1,10 +1,9 @@
 from GoogleMyMaps import GoogleMyMaps
-from pprint import pprint
 
-mapID = "YOUR_MAP_ID"
+map_link = 'YOUR_MAP_LINK'
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     gmm = GoogleMyMaps()
-    data = gmm.get(mapID)
-    pprint(data)
+    my_map = gmm.create_map(map_link)
+    print(my_map)
